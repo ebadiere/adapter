@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  chainlink:
+    image: "smartcontract/chainlink"
+    ports:
+      - "6689:6689"
+    volumes:
+      - /Users/ericbadiere/.chainlink-ropsten:/chainlink
+    env_file:
+      - /Users/ericbadiere/.chainlink-ropsten/.env
+
+    command: local n -p /chainlink/chainlink.pwd
+
+  adapter:
+    build: .
